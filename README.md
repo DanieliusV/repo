@@ -1,1 +1,1 @@
-# repo
+To run server (Express) or user interface (ReactJS), in each folder use commands 'npm install' and 'npm start'
