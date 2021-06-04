@@ -1,0 +1,11 @@
+---
+application:
+  name: "coding-task-db"
+  project: "db-server"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-coding-task-db"
+  routes:
+  - application_name: "coding-task-db"
+    paths:
+    - "/*"
