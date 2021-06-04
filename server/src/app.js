@@ -3,6 +3,7 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var serverless = require('serverless-http');
 
 var indexRouter = require('./routes/router');
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', indexRouter);
+app.use('/.netlify/functions/app', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -27,4 +28,4 @@ app.use(function (err, req, res, next) {
   res.status(err.status || err.statusCode || 500).send(err.message || 'Unknown error');
 });
 
-app.listen(8000, () => console.log(`Running server on port 8000`));
+module.exports.handler = serverless(app);
